@@ -6,6 +6,10 @@ var sendJSONresponse = function(res, status, content) {
     res.json(content);
   };
 
-  module.exports.blogAdd = function (req, res) {
+module.exports.blogAdd = function (req, res) {
+    sendJSONresponse(res, 200, {"status" : "success"});
+  };                               
+
+module.exports.blogEdit = function (req, res) {
     sendJSONresponse(res, 200, {"status" : "success"});
   };                               
