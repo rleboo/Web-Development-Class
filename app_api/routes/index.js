@@ -8,7 +8,7 @@ router.get('/', homeLocations.home);
 
 /* Blog api. */
 //router.get('/blogList', blogLocations.blogList);
-router.post('/blogAdd', blogLocations.blogAdd);
+router.post('/blogs/:blogid', blogLocations.blogAdd);
 //router.put('/blogEdit', blogLocations.blogEdit);
 //router.delete('/blogDelete', blogLocations.blogDelete);
 
