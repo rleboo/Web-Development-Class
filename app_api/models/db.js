@@ -1,7 +1,12 @@
 var mongoose = require('mongoose');
 
 var dbURI = 'mongodb://blogs:123456@localhost/tasks';
-mongoose.connect(dbURI);
+
+mongoose.connect(dbURI, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected correctly to server")
+  db.close();
+});
 
 // Monitor and report when database is connected                      
 mongoose.connection.on('connected', function () {
