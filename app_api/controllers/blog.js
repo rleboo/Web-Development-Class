@@ -10,6 +10,6 @@ module.exports.blogAdd = function (req, res) {
     sendJSONresponse(res, 200, {"status" : "success"});
   };                               
 
-module.exports.blogEdit = function (req, res) {
+module.exports.blogList = function (req, res) {
     sendJSONresponse(res, 200, {"status" : "success"});
   };                               
