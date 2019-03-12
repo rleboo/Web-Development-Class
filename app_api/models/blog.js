@@ -9,3 +9,5 @@ var blogSchema = new mongoose.Schema({
 	  "default": Date.now
 	}
 });
+
+mongoose.model('Blog', blogSchema);
