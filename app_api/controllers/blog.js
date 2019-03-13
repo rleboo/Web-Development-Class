@@ -96,11 +96,14 @@ module.exports.blogCreate = function(req, res) {
 module.exports.blogUpdate = function(req, res) {
   console.log("Updating a blog entry with id of " + req.params.blogid);
   console.log(req.body);  
-  Blog.select('blog_title blog_text')
+  Blog
     .findOneAndUpdate(
-     //{ _id: req.params.blogid },
+     { _id: req.params.blogid },
       { $set: {"blog_title": req.body.blog_title}},
       { $set: {"blog_text": req.body.blog_text}},
+      {createdOn: req.body.createdOn},
+      {_v: 0},
+      
      function(err, response) {
          if (err) {
             console.log("An error occured");
