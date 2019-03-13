@@ -102,8 +102,10 @@ module.exports.blogUpdate = function(req, res) {
       { $set: {"blog_text": req.body.blog_text}},
      function(err, response) {
          if (err) {
-             sendJSONresponse(res, 400, err);
+            console.log("An error occured");
+            sendJSONresponse(res, 400, err);
          } else {
+          console.log("Succesful");
           sendJSONresponse(res, 201, response);
         }
     }
