@@ -76,8 +76,8 @@ module.exports.blogCreate = function(req, res) {
   Blog
     //Calls MongoBb .create functino
    .create({
-      title: req.body.blog_title,
-      text: req.body.blog_text
+      blog_title: req.body.blog_title,
+      blog_text: req.body.blog_text
       //date: req.body.createdOn
      }, function(err, blog) {
        if (err) {
