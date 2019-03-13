@@ -101,9 +101,6 @@ module.exports.blogUpdate = function(req, res) {
      { _id: req.params.blogid },
       { $set: {"blog_title": req.body.blog_title}},
       { $set: {"blog_text": req.body.blog_text}},
-      {createdOn: req.body.createdOn},
-      {_v: 0},
-      
      function(err, response) {
          if (err) {
             console.log("An error occured");
