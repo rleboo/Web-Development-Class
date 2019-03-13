@@ -60,8 +60,8 @@ var buildBlogList = function(req, res, results) {
   var blogs = [];
   results.forEach(function(obj) {
     blogs.push({
-      title: obj.blog_title,
-      text: obj.blog_text,
+      blog_title: obj.blog_title,
+      blog_text: obj.blog_text,
       //date: obj.createdOn,
       _id: obj._id
     });
@@ -93,8 +93,8 @@ module.exports.blogCreate = function(req, res) {
 
 /* Update blog entry */
 module.exports.blogUpdate = function(req, res) {
-  console.log("Updating a blog entry with id of " + req.params.id);
-  console.log(req.body);
+  console.log("Updating a blog entry with id of " + req.params.blogid);
+  console.log(req.body);  
   Blog
     .findOneAndUpdate(
      { _id: req.params.id },
