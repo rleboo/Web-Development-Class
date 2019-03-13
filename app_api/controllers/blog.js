@@ -62,7 +62,7 @@ var buildBlogList = function(req, res, results) {
     blogs.push({
       title: obj.blog_title,
       text: obj.blog_text,
-      date: obj.createdOn,
+      //date: obj.createdOn,
       _id: obj._id
     });
   });
@@ -77,8 +77,8 @@ module.exports.blogCreate = function(req, res) {
     //Calls MongoBb .create functino
    .create({
       title: req.body.blog_title,
-      text: req.body.blog_text,
-      date: req.body.createdOn
+      text: req.body.blog_text
+      //date: req.body.createdOn
      }, function(err, blog) {
        if (err) {
           console.log(err);
