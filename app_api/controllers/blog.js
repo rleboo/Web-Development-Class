@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 var Blog = mongoose.model('Blog');
 
 var sendJSONresponse = function(res, status, content) {
