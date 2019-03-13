@@ -32,12 +32,9 @@
         </div>
         <div class="card-footer">
 	 <div class = "col-sm">
-           <ul class="nav justify-content-start nav-pills card-header-pills">
-             <h5><%= blogs[i].createdOn %></h5>
-           </ul>
            <ul class="nav justify-content-end nav-pills card-header-pills">
              <li class="nav-item"> 
-	       <a class="nav-link" href="/blogEdit"> <i class="fa fa-edit"></i></a>
+	       <a class="nav-link" href="/blogs/"<%= blogs[i]._id %></a>> <i class="fa fa-edit"></i></a>
              </li>
              <li class="nav-item">
                  <a class="nav-link" href="/blogDelete"> <i class="fa fa-trash"></i></a>
