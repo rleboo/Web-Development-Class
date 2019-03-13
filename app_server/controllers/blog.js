@@ -33,7 +33,7 @@ var renderListPage = function(req, res, responseBody){
       pageHeader: {
           blog_title: 'blog_title'
       },
-      blog_text: responseBody
+      blogs: responseBody
   });
 };            
 
@@ -60,7 +60,7 @@ var renderShowPage = function(req, res, responseBody){
       pageHeader: {
               blog_title: 'Blog Info'
       },
-      blog_text: responseBody
+      blogs: responseBody
   });
 };      
 
