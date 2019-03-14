@@ -15,6 +15,4 @@ router.get('/blogAdd', blogLocations.blogAdd);
 router.get('/blogs/:blogid', blogLocations.blogEdit);
 router.get('/blogs/:blogid', blogLocations.blogDelete);
 
-
-
 module.exports = router;
