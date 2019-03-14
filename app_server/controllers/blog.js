@@ -67,7 +67,7 @@ var renderShowPage = function(req, res, responseBody){
 
 
 /* Book Add */
-module.exports.addBlog = function(req, res) {
+module.exports.blogAdd = function(req, res) {
     res.render('blogAdd', { title: 'Blog Add' });
 };    
 
