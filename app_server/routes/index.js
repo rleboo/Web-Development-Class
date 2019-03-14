@@ -11,7 +11,7 @@ router.get('/', homeLocations.home);
 router.get('/blog', blogLocations.blog);
 router.get('/blogList', blogLocations.blogList);
 router.get('/blogAdd', blogLocations.blogAdd);
-router.post('blogAdd', blogLocations.blogCreate);
+router.post('/blogAdd', blogLocations.blogCreate);
 
 router.get('/blogEdit/:blogid', blogLocations.blogEdit);
 router.get('/blogDelete/:blogid', blogLocations.blogDelete);
