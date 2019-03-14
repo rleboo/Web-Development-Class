@@ -62,7 +62,8 @@ var renderShowPage = function(req, res, responseBody){
       },
       blogs: responseBody
   });
-};      
+};
+
 /* Book Edit Post */
 module.exports.postblogEdit = function(req, res){
   var requestOptions, path, postdata;
@@ -70,8 +71,8 @@ module.exports.postblogEdit = function(req, res){
   path = '/api/blogs/' + id;
 
   postdata = {
-      bookTitle: req.body.bookTitle,
-      bookAuthor: req.body.bookAuthor
+      blog_title: req.body.blog_title,
+      blog_text: req.body.blog_text
   };
   requestOptions = {
       url : apiOptions.server + path,
