@@ -66,6 +66,23 @@ var renderShowPage = function(req, res, responseBody){
 
 
 
+
+var _showError = function (req, res, status) {
+  var title, content;
+  if (status === 404) {
+    title = "404, page not found";
+    content = "Oh dear. Looks like we can't find this page. Sorry.";
+  } else {
+    title = status + ", something's gone wrong";
+    content = "Something, somewhere, has gone just a little bit wrong.";
+  }
+  res.status(status);
+  res.render('generic-text', {
+    title : title,
+    content : content
+  });
+ };
+
 /* Book Add */
 module.exports.blogAdd = function(req, res) {
     res.render('blogAdd', { title: 'Blog Add' });
@@ -93,28 +110,13 @@ module.exports.blogCreate = function(req, res){
          if (response.statusCode === 201) {
               res.redirect('/blogList');
          } else {
-             console.log(response.statusCode); 
+             console.log("FUCK SHIT"); 
              _showError(req, res, response.statusCode);
          } 
       }
     ); 
 };          
 
-var _showError = function (req, res, status) {
- var title, content;
- if (status === 404) {
-   title = "404, page not found";
-   content = "Oh dear. Looks like we can't find this page. Sorry.";
- } else {
-   title = status + ", something's gone wrong";
-   content = "Something, somewhere, has gone just a little bit wrong.";
- }
- res.status(status);
- res.render('generic-text', {
-   title : title,
-   content : content
- });
-};
 
 
 
