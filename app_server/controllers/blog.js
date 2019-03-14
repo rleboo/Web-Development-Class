@@ -94,6 +94,6 @@ var renderDeletePage = function(req, res, responseBody){
       pageHeader: {
           blog_ti: 'Blog Delete'
       },
-      blog: responseBody
+      blogs: responseBody
   });
 };
