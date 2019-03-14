@@ -23,7 +23,7 @@
     <form method="post" action="/blog-add/" style="padding: 20px">
       <div class="form-group">
           <label for="summary" class="text-primary">Blog Title</label>
-          <input class="form-control" id="title" name="blog_title" readonly><%= blog.blog_title %></textarea>
+          <input class="form-control" id="title" name="blog_title" readonly><%= blog[0] %></textarea>
           <label for="detail" class="text-primary">Blog Text</label>
           <textarea class="form-control" id="text" rows="3" name="blog_text" readonly><%= blog.blog_text %></textarea>
       </div>
