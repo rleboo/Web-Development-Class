@@ -108,10 +108,12 @@ module.exports.blogCreate = function(req, res){
       requestOptions,
       function(err, response, body) {
          if (response.statusCode === 201) {
+              console.log(response.statusCode);
               res.redirect('/blogList');
          } else {
              console.log(body); 
              _showError(req, res, response.statusCode);
+             console.log(body);
          } 
       }
     ); 
