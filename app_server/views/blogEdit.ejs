@@ -25,7 +25,7 @@
           <label for="summary" class="text-primary">Blog Text</label>
           <input class="form-control" id="title" name="blog_title" value="<%= blogs.blog_title %>"></textarea>
           <label for="detail" class="text-primary">Blog Text</label>
-          <textarea class="form-control" id="text" rows="3" name="blog_text" value= "<%= blogs.blog_text %>"></textarea>
+          <textarea class="form-control" id="text" rows="3" name="blog_text"><%= blogs.blog_text %></textarea>
       </div>
           <input type="submit" class="btn btn-primary" value="Save Blog">
     </form>

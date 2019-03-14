@@ -37,7 +37,7 @@ var renderListPage = function(req, res, responseBody){
   });
 };            
 
-/* Book Show */
+/* Blog Edit */
 module.exports.blogEdit = function(req, res) {
   var requestOptions, path;
   path = "/api/blogs/" + req.params.blogid;
@@ -53,7 +53,7 @@ module.exports.blogEdit = function(req, res) {
 }
   );
 };
-/* Render the book show page */
+/* Render the blog edit page */
 var renderShowPage = function(req, res, responseBody){
   res.render('blogEdit', {
       title: 'Blog Edit',
@@ -64,9 +64,60 @@ var renderShowPage = function(req, res, responseBody){
   });
 };      
 
-module.exports.blogAdd = function(req, res){
-  res.render('blogAdd', {title: 'Blog Add'});
+
+
+/* Book Add */
+module.exports.blogAdd = function(req, res) {
+    res.render('blogAdd', { title: 'Blog Add' });
+};    
+
+/* Book Add Post */
+module.exports.blogCreate = function(req, res){
+    var requestOptions, path, postdata;
+    path = '/api/blogs/';
+
+    postdata = {
+        blog_title: req.body.blog_title,
+        blog_text: req.body.blog_text
+    }; 
+
+    requestOptions = {
+      url : apiOptions.server + path,
+      method : "POST",
+      json : postdata
+    };
+    
+    request(
+      requestOptions,
+      function(err, response, body) {
+         if (response.statusCode === 201) {
+              res.redirect('/blogList');
+         } else {
+             console.log(response.statusCode); 
+             _showError(req, res, response.statusCode);
+         } 
+      }
+    ); 
+};          
+
+var _showError = function (req, res, status) {
+ var title, content;
+ if (status === 404) {
+   title = "404, page not found";
+   content = "Oh dear. Looks like we can't find this page. Sorry.";
+ } else {
+   title = status + ", something's gone wrong";
+   content = "Something, somewhere, has gone just a little bit wrong.";
+ }
+ res.status(status);
+ res.render('generic-text', {
+   title : title,
+   content : content
+ });
 };
+
+
+
 
 
 /* Blog Delete */
