@@ -63,6 +63,35 @@ var renderShowPage = function(req, res, responseBody){
       blogs: responseBody
   });
 };      
+/* Book Edit Post */
+module.exports.postblogEdit = function(req, res){
+  var requestOptions, path, postdata;
+  var id = req.params.blogid;
+  path = '/api/blogs/' + id;
+
+  postdata = {
+      bookTitle: req.body.bookTitle,
+      bookAuthor: req.body.bookAuthor
+  };
+  requestOptions = {
+      url : apiOptions.server + path,
+      method : "PUT",
+      json : postdata
+  };
+
+  request(
+requestOptions,
+      function(err, response, body) {
+          if (response.statusCode === 201) {
+              res.redirect('/blogList');
+          } else {
+              _showError(req, res, response.statusCode);
+          }
+      }
+  );
+};
+
+
 
 
 /* Book Add */
