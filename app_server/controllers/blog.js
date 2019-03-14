@@ -68,6 +68,30 @@ module.exports.blogAdd = function(req, res){
   res.render('blogAdd', {title: 'Blog Add'});
 };
 
-module.exports.blogDelete = function(req, res){
-  res.render('blogDelete', {title: 'Blog Delete'});
+
+/* Blog Delete */
+module.exports.blogDelete = function(req, res) {
+  var requestOptions, path;
+  path = "/api/blogs/" + req.params.id;
+  requestOptions = {
+      url : apiOptions.server + path,
+      method : "GET",
+      json : {}
+  };
+  request(
+requestOptions,
+      function(err, response, body) {
+          renderDeletePage(req, res, body);
+      }
+  );
+};
+/* Render the Blog delete page */
+var renderDeletePage = function(req, res, responseBody){
+      res.render('blogDelete', {
+      title: 'Blog Delete',
+      pageHeader: {
+          blog_title: 'Blog Delete'
+      },
+      blog: responseBody
+  });
 };
