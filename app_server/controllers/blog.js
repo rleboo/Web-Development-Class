@@ -151,7 +151,7 @@ var renderDeletePage = function(req, res, responseBody){
 module.exports.blogDelete = function(req, res){
   var requestOptions, path, postdata;
   var id = req.params.blogid;
-  path = '/api/blog/' + id;
+  path = '/api/blogs/' + id;
 
   requestOptions = {
       url : apiOptions.server + path,
