@@ -110,7 +110,7 @@ module.exports.blogCreate = function(req, res){
          if (response.statusCode === 201) {
               res.redirect('/blogList');
          } else {
-             console.log("FUCK SHIT"); 
+             console.log(body); 
              _showError(req, res, response.statusCode);
          } 
       }
