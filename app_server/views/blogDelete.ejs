@@ -22,8 +22,8 @@
   <div class="card mt-3 border-primary .mx-auto" style="width: 50%">
     <form method="post" action="/blog-add/" style="padding: 20px">
       <div class="form-group">
-          <label for="summary" class="text-primary">Blog Title</label>
-          <input class="form-control" id="title" name="blog_title" readonly><%= blog_title %></textarea>
+          <label for="summary" class="text-primary"><%= blog[0].blog_title%></label>
+          <input class="form-control" id="title" name="blog_title" readonly value="<%=blog_title%>"></textarea>
           <label for="detail" class="text-primary">Blog Text</label>
           <textarea class="form-control" id="text" rows="3" name="blog_text" readonly><%= blog_text %></textarea>
       </div>
