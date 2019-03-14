@@ -88,8 +88,7 @@ requestOptions,
 /* Render the Blog delete page */
 var renderDeletePage = function(req, res, responseBody){
       res.render('blogDelete', {
-      title: "Blog Delete",
-      test: responseBody.blog_title ,
+      title: 'Blog Delete',
       pageHeader: {
           blog_ti: 'Blog Delete'
       },
