@@ -98,9 +98,8 @@ module.exports.blogUpdate = function(req, res) {
   console.log(req.body);  
   Blog
     .findOneAndUpdate(
-     { _id: req.params.blogid },
-      { $set: {"blog_title": req.body.blog_title}},
-      { $set: {"blog_text": req.body.blog_text}},
+      { _id: req.params.blogid },
+      { $set: {"blog_title": req.body.blog_title, "blog_text": req.body.blog_text}},
      function(err, response) {
          if (err) {
             console.log("An error occured");
