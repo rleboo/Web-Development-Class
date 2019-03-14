@@ -72,7 +72,7 @@ module.exports.blogAdd = function(req, res){
 /* Blog Delete */
 module.exports.blogDelete = function(req, res) {
   var requestOptions, path;
-  path = "/api/blogs/" + req.params.id;
+  path = "/api/blogs/" + req.params._id;
   console.log(path);
   requestOptions = {
       url : apiOptions.server + path,
