@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href='/font-awesome/css/font-awesome.min.css'>
+      <title><%= title %></title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href='/stylesheets/style.css' />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href='/font-awesome/css/font-awesome.min.css'>
   </head>
 
  <body class="pt-5">
     <div class= "container">
       <nav class="navbar fixed-top navbar-expand-sm navbar-light mb-3" style="background-color: #e3f2fd;">
-        <a class="navbar-brand" href="/">My Blog</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/blogList">List Blogs</a>
-          <a class="nav-item nav-link active" href="/blogAdd">Add Blog</a>
-        </div>
+    <a class="navbar-brand" href="/">My Blog</a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="/blogList">List Blogs</a>
+      <a class="nav-item nav-link active" href="/blogAdd">Add Blog</a>
+      </div>
     </div>
   </nav> 
-  <p>
-  <h1><%= title %></h1>
-    <p>Under Construction</p>
-  </p>
+  <div class="card" style="width: 50%">
+    <form method="post" action="/blog-add/" style="padding: 20px">
+      <div class="form-group">
+          <label for="summary" class="text-primary">Blog Title</label>
+          <input class="form-control" id="title" name="blogTitle"></textarea>
+          <label for="detail" class="text-primary">Blog Text</label>
+          <textarea class="form-control" id="text" rows="3" name="blogText"></textarea>
+      </div>
+          <input type="submit" class="btn btn-primary" value="Add Blog">
+    </form>
+   </div>
   </div>
-  </body>
+</body>
 </html>
