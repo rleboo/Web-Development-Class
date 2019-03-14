@@ -14,6 +14,8 @@ router.get('/blogAdd', blogLocations.blogAdd);
 router.post('/blogAdd', blogLocations.blogCreate);
 
 router.get('/blogEdit/:blogid', blogLocations.blogEdit);
-router.get('/blogDelete/:blogid', blogLocations.blogDelete);
+
+router.get('/blogDelete/:blogid', blogLocations.getblogDelete);
+router.post('/blogDelete/:blogid', blogLocations.blogDelete)
 
 module.exports = router;

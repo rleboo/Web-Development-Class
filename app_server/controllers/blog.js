@@ -65,29 +65,10 @@ var renderShowPage = function(req, res, responseBody){
 };      
 
 
-
-
-var _showError = function (req, res, status) {
-  var title, content;
-  if (status === 404) {
-    title = "404, page not found";
-    content = "Oh dear. Looks like we can't find this page. Sorry.";
-  } else {
-    title = status + ", something's gone wrong";
-    content = "Something, somewhere, has gone just a little bit wrong.";
-  }
-  res.status(status);
-  res.render('generic-text', {
-    title : title,
-    content : content
-  });
- };
-
 /* Book Add */
 module.exports.blogAdd = function(req, res) {
     res.render('blogAdd', { title: 'Blog Add' });
 };    
-
 /* Book Add Post */
 module.exports.blogCreate = function(req, res){
     var requestOptions, path, postdata;
@@ -117,15 +98,28 @@ module.exports.blogCreate = function(req, res){
          } 
       }
     ); 
-};          
-
-
+};
+var _showError = function (req, res, status) {
+  var title, content;
+  if (status === 404) {
+    title = "404, page not found";
+    content = "Oh dear. Looks like we can't find this page. Sorry.";
+  } else {
+    title = status + ", something's gone wrong";
+    content = "Something, somewhere, has gone just a little bit wrong.";
+  }
+  res.status(status);
+  res.render('generic-text', {
+    title : title,
+    content : content
+  });
+ };
 
 
 
 
 /* Blog Delete */
-module.exports.blogDelete = function(req, res) {
+module.exports.getblogDelete = function(req, res) {
   var requestOptions, path;
   path = "/api/blogs/" + req.params.blogid;
   console.log(path);
@@ -152,3 +146,27 @@ var renderDeletePage = function(req, res, responseBody){
       blogs: responseBody
   });
 };
+
+/* Blog Delete Post */
+module.exports.blogDelete = function(req, res){
+  var requestOptions, path, postdata;
+  var id = req.params.blogid;
+  path = '/api/book/' + id;
+
+  requestOptions = {
+      url : apiOptions.server + path,
+      method : "DELETE",
+      json : {}
+  };
+  request(
+      requestOptions,
+      function(err, response, body) {
+          if (response.statusCode === 204) {
+              res.redirect('/blogList');
+          } else {
+              _showError(req, res, response.statusCode);
+          }
+      }
+  );
+};                    
+
