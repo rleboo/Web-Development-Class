@@ -7,7 +7,6 @@ var blogLocations = require('../controllers/blog');
 /* Route to home pages. */
 router.get('/', homeLocations.home);
 
-
 /* Routes to blog pages. */
 router.get('/blog', blogLocations.blog);
 router.get('/blogList', blogLocations.blogList);
