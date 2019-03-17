@@ -32,10 +32,7 @@
         </div>
         <div class="card-footer">
 	 <div class = "col-sm">
-          <nav class="nav justify-content-start nav-pills card-header-pills">
-            <span class="navbar-brand h5">Navbar</span>
-          </nav>
-           <ul class="nav justify-content-end nav-pills card-header-pills">
+          <ul class="nav justify-content-end nav-pills card-header-pills">
              <li class="nav-item"> 
 	       <a class="nav-link" href="/blogEdit/<%= blogs[i]._id%>"><i class="fa fa-edit"></i></a>
              </li>
@@ -43,6 +40,9 @@
                  <a class="nav-link" href="/blogDelete/<%= blogs[i]._id%>"><i class="fa fa-trash"></i></a>
              </li>
            </ul>
+	  <nav class="nav justify-content-start nav-pills card-header-pills">
+             <span class="p"><%= blogs[i].createdOn %></span>
+          </nav>
         </div>
 	</div>
       </div>
