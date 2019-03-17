@@ -26,7 +26,7 @@ module.exports.blogList = function(req, res){
       }
   );
 };
-/* Render the book list page */
+/* Render the Blog list page */
 var renderListPage = function(req, res, responseBody){
   res.render('blogList', {
       title: 'Blog List',
@@ -64,7 +64,7 @@ var renderShowPage = function(req, res, responseBody){
   });
 };
 
-/* Book Edit Post */
+/* Blog Edit Post */
 module.exports.postblogEdit = function(req, res){
   var requestOptions, path, postdata;
   var id = req.params.blogid;
@@ -95,11 +95,11 @@ requestOptions,
 
 
 
-/* Book Add */
+/* Blog Add */
 module.exports.blogAdd = function(req, res) {
     res.render('blogAdd', { title: 'Blog Add' });
 };    
-/* Book Add Post */
+/* Blog Add Post */
 module.exports.blogCreate = function(req, res){
     var requestOptions, path, postdata;
     path = '/api/blogs/';
