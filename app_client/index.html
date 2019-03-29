@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="blogApp">
+    <head>
+        <script src = "/app_client/lib/angular.min.js"></script>
+        <script src = "https://code.angularjs.org/1.2.16/angular-route.min.js"></script>  
+        <script src = "https://unpkg.com/@uirouter/angularjs@1.0.22/release/angular-ui-router.min.js"></script>   
+        <link rel="stylesheet" href='/public/stylesheets/style.css' />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href='/public/font-awesome/css/font-awesome.min.css'>
+    </head>
+    <body class="pt-5">
+        <div class= "container">
+            <nav class="navbar fixed-top navbar-expand-sm navbar-light mb-3" style="background-color: #e3f2fd;">
+                <a class="navbar-brand" href="/">My Blog</a>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/blogList">List Blogs</a>
+                        <a class="nav-item nav-link active" href="/blogAdd">Add Blog</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <h1>{{vm.pageHeader.title}}</h1>
+        <p>Welcome to my blog. Bitch!</p>
+    </body>
+</html>
