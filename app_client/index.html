@@ -19,7 +19,10 @@
                 </div>
             </nav>
         </div>
-        <h1>{{vm.pageHeader.title}}</h1>
-        <p>Welcome to my blog. Bitch!</p>
+        <div ng-controller="HomeController as vm">
+            <h1>{{vm.pageHeader.title}}</h1>
+            <p>Welcome to my blog. Bitch!</p>
+        </div>
+        
     </body>
 </html>
