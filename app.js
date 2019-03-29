@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 require('./app_api/models/db');
 
-var indexRouter = require('./app_client/bloggerApp.js');
 var routesApi = require('./app_api/routes/index');
 
 //Previously static database
@@ -26,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));               
 
 
-app.use('/', indexRouter);
 app.use('/api', routesApi);
 
 // catch 404 and forward to error handler
