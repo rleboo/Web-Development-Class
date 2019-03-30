@@ -1,6 +1,6 @@
 //Declare angular module
 //ngRoute name of the module >> Add it to views
-var app = angular.module('blogApp', []);                
+var app = angular.module('blogApp', ['ngRoute']);                
 
 //*** Router Provider ***
 app.config(function($routeProvider) {
@@ -33,7 +33,7 @@ app.config(function($routeProvider) {
       });
 
 //*** Controllers ***
-app.controller('HomeController', function () {
+app.controller('HomeController', function HomeController() {
     var vm = this;
     vm.message = "Welcome to my Blog site!";
 });
