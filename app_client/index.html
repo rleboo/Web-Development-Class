@@ -2,7 +2,7 @@
 <html ng-app="blogApp">
     <head>
         <script src = "/lib/angular.min.js"></script>
-        <script src = "https://unpkg.com/@uirouter/angularjs@1.0.22/release/angular-ui-router.min.js"></script>   
+        <script src = "/lib/angular-route.min.js"></script>   
         <link rel="stylesheet" href='/public/stylesheets/style.css' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href='/public/font-awesome/css/font-awesome.min.css'>
@@ -19,10 +19,9 @@
                 </div>
             </nav>
         </div>
-        <div ng-controller="HomeController as vm">
-            <h1>{{vm.pageHeader.title}}</h1>
-            <p>Welcome to my blog. Bitch!</p>
-        </div>
-        
+	<script type="text/ng-template" id = "index.html">
+          <h1>{{vm.message}}</h1>
+	</script>
     </body>
+<script src="bloggerApp.js"></script>
 </html>

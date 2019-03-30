@@ -12,8 +12,6 @@ var routesApi = require('./app_api/routes/index');
 //require('./app_server/models/db');
 
 var app = express();
-
-// view engine setup
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
