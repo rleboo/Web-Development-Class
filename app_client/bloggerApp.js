@@ -38,9 +38,10 @@ app.config(function($routeProvider, $locationProvider) {
             
         .when('/temp', {
             templateUrl: '/temp.html',
-            controller: 'temp', 
+            controller: 'tempController', 
             controllerAs: 'vm'
             })
+
 	.otherwise({redirectTo: '/'});
       });
 
@@ -70,7 +71,7 @@ app.controller('DeleteController', function DeleteController() {
     vm.message = "Welcome to my Blog site!";
 });
 
-app.controller('temp', function temp() {
+app.controller('tempController', function tempController() {
     var vm = this;
-    vm.message = "Fuck"";
+    vm.message = "Fuck";
 });
