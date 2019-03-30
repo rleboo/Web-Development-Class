@@ -3,7 +3,8 @@
 var app = angular.module('blogApp', ['ngRoute']);                
 
 //*** Router Provider ***
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $locationProvider) {
+    $locationProvider.hashPrefix('');
     $routeProvider
         .when('/', {
             templateUrl: '/index.html',
@@ -34,9 +35,8 @@ app.config(function($routeProvider) {
             controller: 'DeleteController',
             controllerAs: 'vm'
             })
-
-  
-        .otherwise({redirectTo: '/'});
+	
+	.otherwise({redirectTo: '/'});
       });
 
 //*** Controllers ***
