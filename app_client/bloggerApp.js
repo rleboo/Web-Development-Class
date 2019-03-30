@@ -7,7 +7,7 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
     $routeProvider
         .when('/', {
-            templateUrl: '/index.html',
+            templateUrl: '/homepage.html',
             controller: 'HomeController',
             controllerAs: 'vm'
             })
@@ -36,12 +36,6 @@ app.config(function($routeProvider, $locationProvider) {
             controllerAs: 'vm'
             })
             
-        .when('/temp', {
-            templateUrl: '/temp.html',
-            controller: 'tempController', 
-            controllerAs: 'vm'
-            })
-
 	.otherwise({redirectTo: '/'});
       });
 
@@ -71,7 +65,5 @@ app.controller('DeleteController', function DeleteController() {
     vm.message = "Welcome to my Blog site!";
 });
 
-app.controller('tempController', function tempController() {
-    var vm = this;
-    vm.message = "Fuck";
-});
+
+
