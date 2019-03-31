@@ -68,7 +68,8 @@ app.controller('HomeController', function HomeController() {
 app.controller('ListController', function ListController($http) {
     var vm = this;
     vm.message = "Something goes here!";
-
+    vm.blog = {}
+    
     getAllBlogs($http)
     .then(function successCallback(response) {
         vm.blog = data;
