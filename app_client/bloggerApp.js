@@ -65,7 +65,7 @@ app.controller('HomeController', function HomeController() {
     vm.message = "Welcome to my Blog site!";
 });
 
-app.controller('ListController', function ListController() {
+app.controller('ListController', function ListController($http) {
     var vm = this;
     vm.message = "Something goes here!";
 
@@ -73,13 +73,15 @@ app.controller('ListController', function ListController() {
       .success(function(data) {
         vm.blog = data;
         vm.message = "Book data found!";
+        console.log("Success!");
       })
       .error(function (e) {
         vm.message = "Could not get list of books";
+        console.log("Error!");
       });
 });
 
-app.controller('AddController', ['$http', '$state', function AddController($http, $state) {
+app.controller('AddController', ['$http', '$location', function AddController($http, $location) {
     var vm = this;
     vm.message = "Add stuff";
     vm.submit = function() {             
@@ -87,13 +89,14 @@ app.controller('AddController', ['$http', '$state', function AddController($http
         blog_title : userForm.blog_title.value,
         blog_text : userForm.blog_text.value
     })
-          .success(function(data) {
-            vm.message = "Blog Added!";
-            $state.go('blogList');   // Refer to book for info on StateProvder
-          })
-          .error(function (e) {
-            vm.message = "Could not add blog";
-          });
+    .success(function(data) {
+        vm.message = "Blog Added!";
+        console.log("Success!");
+        $location.path('/blogList');   // Refer to book for info on StateProvder
+    })
+    .error(function (e) {
+         vm.message = "Could not add blog";
+    });
     }
 }]);
 
