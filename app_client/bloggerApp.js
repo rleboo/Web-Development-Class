@@ -70,12 +70,11 @@ app.controller('ListController', function ListController($http) {
     vm.message = "Something goes here!";
 
     getAllBlogs($http)
-      .success(function(data) {
+    .then(function successCallback(response) {
         vm.blog = data;
         vm.message = "Book data found!";
         console.log("Success!");
-      })
-      .error(function (e) {
+      }, function errorCallback(response) {
         vm.message = "Could not get list of books";
         console.log("Error!");
       });
