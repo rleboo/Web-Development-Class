@@ -39,6 +39,21 @@ app.config(function($routeProvider, $locationProvider) {
 	.otherwise({redirectTo: '/'});
       });
 
+
+//*** REST Web API functions ***
+function getAllBlogs($http) {
+    return $http.get('/api/blogs');
+}
+
+function getBlogById($http, id) {
+    return $http.get('/api/blogs/' + id);
+}
+
+function updateBlogById($http, id, data) {
+    return $http.put('/api/blogs/' + id, data);
+}
+
+
 //*** Controllers ***
 app.controller('HomeController', function HomeController() {
     var vm = this;
@@ -48,6 +63,15 @@ app.controller('HomeController', function HomeController() {
 app.controller('ListController', function ListController() {
     var vm = this;
     vm.message = "Something goes here!";
+
+    getAllBlogs($http)
+      .success(function(data) {
+        vm.blog = data;
+        vm.message = "Book data found!";
+      })
+      .error(function (e) {
+        vm.message = "Could not get list of books";
+      });
 });
 
 app.controller('AddController', function AddController() {
