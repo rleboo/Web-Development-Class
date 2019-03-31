@@ -4,7 +4,7 @@ var app = angular.module('blogApp', ['ngRoute']);
 
 //*** Router Provider ***
 app.config(function($routeProvider, $locationProvider) {
-    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
     $routeProvider
         .when('/', {
             templateUrl: '/homePage.html',
