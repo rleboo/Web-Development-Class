@@ -58,6 +58,10 @@ function addBlogByID($http, data)
     return $http.post('/api/blogs/', data);
 }
 
+function deleteBlogByID($http, id) {
+    return $http.delete('/api/blogs/' + id)
+}
+
 
 //*** Controllers ***
 app.controller('HomeController', function HomeController() {
@@ -134,7 +138,32 @@ app.controller('EditController', ['$http', '$routeParams', '$location',  functio
         }
 }]);
 
-app.controller('DeleteController', function DeleteController() {
+app.controller('DeleteController', ['$http', '$routeParams', '$location',  function EditController($http, $routeParams, $location) {
     var vm = this;
-    vm.message = "Welcome to my Blog site!";
-});
+    vm.book = {}; 
+    vm.id = $routeParams.id;
+    vm.message = "Something goes here";
+    
+    getBlogById($http, vm.id)
+    .then(function successCallback(response) {
+        vm.message = "Blog Returned";
+	    vm.book = response.data;
+        console.log(response);
+
+    }, function errorCallback(response) {
+        vm.message = "Could not add blog";
+        console.log("Error!")
+    });
+
+    vm.submit = function() {             
+        deleteBlogByID($http, vm.id)
+        .then(function successCallback(response) {
+            vm.message = "Blog Deleted!";
+            console.log("delete succesful");
+            $location.path('/blogList');
+          }, function errorCallback(response) {
+            vm.message = "Could not Delete";
+            console.log("Error! Delete not working")
+          });
+    }
+}]);
