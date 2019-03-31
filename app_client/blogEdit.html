@@ -3,9 +3,9 @@
     <form  name="userForm" ng-submit="vm.submit()" ng-controller="EditController" style="padding: 20px">
       <div class="form-group">
           <label for="summary" class="text-primary">Blog Text</label>
-          <input class="form-control" id="title" name="blog_title" value="{{vm.blog_title}}"></textarea>
+          <input class="form-control" id="title" name="blog_title" value="{{vm.book.blog_title}}"></textarea>
           <label for="detail" class="text-primary">Blog Text</label>
-          <textarea class="form-control" id="text" rows="3" name="blog_text">{{vm.blog_text}}</textarea>
+          <textarea class="form-control" id="text" rows="3" name="blog_text">{{vm.book.blog_text}}</textarea>
       </div>
           <input type="submit" class="btn btn-primary" value="Save Blog">
     </form>

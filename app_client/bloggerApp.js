@@ -101,7 +101,7 @@ app.controller('AddController', ['$http', '$location', function AddController($h
 }]);
 
 
-app.controller('EditController', ['$http', '$routeParams', function EditController($http, $routeParams) {
+app.controller('EditController', ['$http', '$routeParams', '$location',  function EditController($http, $routeParams, $location) {
     var vm = this;
     vm.book = {}; 
     vm.id = $routeParams.id;
@@ -109,9 +109,9 @@ app.controller('EditController', ['$http', '$routeParams', function EditControll
     
     getBlogById($http, vm.id)
     .then(function successCallback(response) {
-        vm.message = "Blog Added!";
-        console.log("Success!");
-        $location.path('/blogList');
+        vm.message = "Blog Returned";
+	vm.book = response.data;
+        console.log(response);
 
     }, function errorCallback(response) {
         vm.message = "Could not add blog";
@@ -125,11 +125,11 @@ app.controller('EditController', ['$http', '$routeParams', function EditControll
         })
         .then(function successCallback(response) {
             vm.message = "Blog Updated!";
-            console.log("Success!");
+            console.log("Put succesfull");
             $location.path('/blogList');
           }, function errorCallback(response) {
             vm.message = "Could not add blog";
-            console.log("Error!")
+            console.log("Error! Put not working")
           });
         }
 }]);
