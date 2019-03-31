@@ -20,8 +20,33 @@
                 </div>
                </div>
             </nav>
+	    <script type="text/ng-template" id="/bookList.html">
+      		<p></p>
+      		<div ng-repeat="blogs in vm.blogs">
+      		<div class="card border-primary" style="width: 50%"> 
+            	<div class="card-header">
+            	</div>
+            		<div class="card-body">
+                	<h5 class ="card-title">{{blogs.blog_title}</h5>
+            	</div>
+            	<div class="card-footer">
+                <div class = "col-sm">
+                   <ul class="nav justify-content-end nav-pills card-header-pills">
+                     <li class="nav-item">
+                         <a class="nav-link" href="#/book-edit/" <i class="fas fa-edit"</i></a>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#/book-delete/" <i class="fas fa-trash-alt"></i></a>
+                     </li>
+                   </ul>
+            </div>	
+            </div>
+      </div>
+      <p>               
+      </div>
+    </script>
+	  <div ng-view><div>
         </div>
-       <div ng-view></div>
     </body>
     <script type="text/javascript" src="bloggerApp.js"></script>   
 </html>

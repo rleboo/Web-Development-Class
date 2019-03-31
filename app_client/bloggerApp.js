@@ -62,7 +62,7 @@ function addBlogByID($http, data)
 //*** Controllers ***
 app.controller('HomeController', function HomeController() {
     var vm = this;
-    vm.message = "Welcome to my Blog site!";
+    vm.title = "Ray Leboo's Blog Site";
 });
 
 app.controller('ListController', function ListController($http) {
