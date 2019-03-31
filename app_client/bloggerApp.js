@@ -53,6 +53,11 @@ function updateBlogById($http, id, data) {
     return $http.put('/api/blogs/' + id, data);
 }
 
+function addBlogByID($http, data)
+{
+    return $http.post('/api/blogs/', data);
+}
+
 
 //*** Controllers ***
 app.controller('HomeController', function HomeController() {
@@ -74,10 +79,24 @@ app.controller('ListController', function ListController() {
       });
 });
 
-app.controller('AddController', function AddController() {
+app.controller('AddController', ['$http', '$state', function AddController($http, $state) {
     var vm = this;
-    vm.message = "Welcome to my Blog site!";
-});
+    vm.message = "Add stuff";
+    vm.submit = function() {             
+    addBlogByID($http, {
+        blog_title : userForm.blog_title.value,
+        blog_text : userForm.blog_text.value
+    })
+          .success(function(data) {
+            vm.message = "Blog Added!";
+            $state.go('blogList');   // Refer to book for info on StateProvder
+          })
+          .error(function (e) {
+            vm.message = "Could not add blog";
+          });
+    }
+}]);
+
 
 app.controller('EditController', function EditController() {
     var vm = this;
