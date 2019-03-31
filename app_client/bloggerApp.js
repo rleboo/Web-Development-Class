@@ -68,13 +68,18 @@ app.controller('HomeController', function HomeController() {
 app.controller('ListController', function ListController($http) {
     var vm = this;
     vm.message = "Something goes here!";
+<<<<<<< HEAD
     vm.blog = {}
     
+=======
+    vm.blog = {};    
+
+>>>>>>> 8690ce22433a59386ad94edfd7e3bd6bb2050208
     getAllBlogs($http)
     .then(function successCallback(response) {
-        vm.blog = data;
+        vm.blog = response.data;
         vm.message = "Book data found!";
-        console.log("Success!");
+        console.log(vm.blog);
       }, function errorCallback(response) {
         vm.message = "Could not get list of books";
         console.log("Error!");
