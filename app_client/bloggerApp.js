@@ -89,14 +89,14 @@ app.controller('AddController', ['$http', '$location', function AddController($h
         blog_title : userForm.blog_title.value,
         blog_text : userForm.blog_text.value
     })
-    .success(function(data) {
+    .then(function successCallback(response) {
         vm.message = "Blog Added!";
         console.log("Success!");
-        $location.path('/blogList');   // Refer to book for info on StateProvder
-    })
-    .error(function (e) {
-         vm.message = "Could not add blog";
-    });
+        $location.path('/blogList');
+      }, function errorCallback(response) {
+        vm.message = "Could not add blog";
+        console.log("Error!")
+      });
     }
 }]);
 
