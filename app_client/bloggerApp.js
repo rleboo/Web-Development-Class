@@ -101,15 +101,40 @@ app.controller('AddController', ['$http', '$location', function AddController($h
 }]);
 
 
-app.controller('EditController', function EditController() {
+app.controller('EditController', ['$http', '$routeParams', function EditController($http, $routeParams) {
     var vm = this;
-    vm.message = "Welcome to my Blog site!";
-});
+    vm.book = {}; 
+    vm.id = $routeParams.id;
+    vm.message = "Something goes here";
+    
+    getBlogById($http, vm.id)
+    .then(function successCallback(response) {
+        vm.message = "Blog Added!";
+        console.log("Success!");
+        $location.path('/blogList');
+
+    }, function errorCallback(response) {
+        vm.message = "Could not add blog";
+        console.log("Error!")
+    });
+
+    vm.submit = function() {             
+        updateBlogById($http, vm.id, {
+            blog_title : userForm.blog_title.value,
+            blog_text : userForm.blog_text.value
+        })
+        .then(function successCallback(response) {
+            vm.message = "Blog Updated!";
+            console.log("Success!");
+            $location.path('/blogList');
+          }, function errorCallback(response) {
+            vm.message = "Could not add blog";
+            console.log("Error!")
+          });
+        }
+}]);
 
 app.controller('DeleteController', function DeleteController() {
     var vm = this;
     vm.message = "Welcome to my Blog site!";
 });
-
-
-
