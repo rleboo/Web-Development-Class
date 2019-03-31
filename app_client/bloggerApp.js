@@ -140,14 +140,14 @@ app.controller('EditController', ['$http', '$routeParams', '$location',  functio
 
 app.controller('DeleteController', ['$http', '$routeParams', '$location',  function EditController($http, $routeParams, $location) {
     var vm = this;
-    vm.book = {}; 
+    vm.blog = {}; 
     vm.id = $routeParams.id;
     vm.message = "Something goes here";
     
     getBlogById($http, vm.id)
     .then(function successCallback(response) {
         vm.message = "Blog Returned";
-	    vm.book = response.data;
+	vm.blog = response.data;
         console.log(response);
 
     }, function errorCallback(response) {
