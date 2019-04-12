@@ -46,5 +46,5 @@ process.on('SIGTERM', function() {
  
 //Brings in schemas from blog.js 
 require('./blog');
-
+require('./users');
 
