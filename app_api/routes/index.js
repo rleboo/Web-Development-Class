@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
-var jwt = require('express-jwt'); 
+var jwt = require('express-jwt');
+console.log("What the hell");
+console.log(process.env.JWT_SECRET); 
 var auth = jwt({   // Lab 6
   secret: process.env.JWT_SECRET,
   userProperty: 'payload'
