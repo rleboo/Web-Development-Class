@@ -1,29 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html ng-app="blogApp">
     <head>
         <title>Ray's Blog</title>
 	<script src="/lib/angular.min.js"></script>
         <script src = "/lib/angular-route.min.js"></script>
         <script src = "/lib/angular-ui-router.js"></script>
-	<script src="/lib/angular.min.js.map"></script> 
-	<script src = "/lib/angular-route.min.js.map"></script>
-	<script src = "/lib/angular-ui-router.js.map"></script>
         <link rel="stylesheet" href='/lib/stylesheets/style.css' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href='/lib/font-awesome/css/font-awesome.min.css'>
     </head>
     <body class="pt-5">
-        <div class= "container">
-            <nav class="navbar fixed-top navbar-expand-sm navbar-light mb-3" style="background-color: #e3f2fd;">
-                <a class="navbar-brand" href="#/">My Blog</a>
-             	<!-- Navigation Directive -->    
-		<div ng-controller="NavigationController">
-		   <navigation></navigation>  
-		</div>
-	    </nav>
-	    <div ng-view></div>
-        </div>
+        <div class= "container"> 	 
+	   <div ng-view></div>
+	</div>
     </body>
-    <script type="text/javascript" src="bloggerApp.js"></script>
-    <script type ="text/javascript" src="common/nav/navigation.js"></script>   
+    <script src="bloggerApp.js"></script>
+    <script src="/common/auth/authentication.js"></script>
+    <script src="/common/nav/navigation.js"></script>
 </html>

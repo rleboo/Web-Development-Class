@@ -75,22 +75,11 @@ function deleteBlogByID($http, id) {
     return $http.delete('/api/blogs/' + id)
 }
 
+
 //*** Controllers ***
-app.controller('HomeController', ['$location', 'authentication',  function HomeController($location, authentication) {
+app.controller('HomeController', ['$location',  function HomeController($location) {
     var vm = this;
     vm.title = "Ray Leboo's Blog Site";
-    vm.currentPath = $location.path();
-    vm.currentUser = function()  {
-        return authentication.currentUser();
-    }
-    vm.isLoggedIn = function() {
-	console.log("User is logged in");
-        return authentication.isLoggedIn();
-    }
-    vm.logout = function() {
-      authentication.logout();
-      $location.path('/');
-    };
     console.log("fuck");
 	
 }]);
