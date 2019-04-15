@@ -5,6 +5,9 @@
 	<script src="/lib/angular.min.js"></script>
         <script src = "/lib/angular-route.min.js"></script>
         <script src = "/lib/angular-ui-router.js"></script>
+	<script src="/lib/angular.min.js.map"></script> 
+	<script src = "/lib/angular-route.min.js.map"></script>
+	<script src = "/lib/angular-ui-router.js.map"></script>
         <link rel="stylesheet" href='/lib/stylesheets/style.css' />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href='/lib/font-awesome/css/font-awesome.min.css'>
@@ -16,7 +19,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="#/blogList">List Blogs</a>
-                        <a class="nav-item nav-link active" href="#/blogAdd">Add Blog</a>
+                        <a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="#/blogAdd">Add Blog</a>
+			<a ng-show="!vm.isLoggedIn()" class="nav-item nav-link active" href="#/login">Sign In</a>
+			<a ng-show="vm.isLoggedIn()" class="nav-item nav-link active" href="" ng-click="vm.logout()"Logout <small>({{ vm.currentUser().email }})</small></a>
+
                 </div>
                </div>
             </nav>

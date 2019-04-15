@@ -21,4 +21,9 @@ router.put('/blogs/:blogid', auth, blogLocations.blogUpdate);
 
 router.delete('/blogs/:blogid', auth, blogLocations.blogDelete);
 
+router.post('/register', ctrlAuth.register);
+
+router.post('/login', ctrlAuth.login); 
+
+
 module.exports = router;
