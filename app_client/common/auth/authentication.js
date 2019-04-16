@@ -24,15 +24,13 @@ app.service('authentication', authentication);
         };
         
         var logout = function() {
-            $window.localStorage.removeItem('blog-token');
+            $window.localStorage['blog-token'] = "undefined";
         };
         
         var isLoggedIn = function() {
           var token = getToken();
-
-          if(token){
+          if(token != "undefined"){
             var payload = JSON.parse($window.atob(token.split('.')[1]));
-
             return payload.exp > Date.now() / 1000;
           } else {
             return false;
@@ -92,7 +90,7 @@ app.controller('LoginController', [ '$http', '$location', 'authentication', func
         .login(vm.credentials)
         .then(function successCallBack(response){
 	  console.log("This worked");
-	  authentication.saveToken(response.token);
+	  authentication.saveToken(response.data.token);
 	  $location.search('page', null);
 	  $location.path(vm.returnPage);
 	 }, function errorCallBack(response) {
@@ -124,18 +122,17 @@ app.controller('RegisterController', [ '$http', '$location', 'authentication', f
         vm.formError = "All fields required, please try again";
         return false;
       } else {
-	console.log("Fuck it registered");
         vm.doRegister();
       }
     };
 
     vm.doRegister = function() {
-	console.log("Fuck it didn't doRegister");
-      vm.formError = "";
-      authentication
+        vm.formError = "";
+        authentication
         .register(vm.credentials)
         .then(function successCallback(response){
-	  authentication.saveToken(response.token);	  
+	  console.log("This is token");
+	  authentication.saveToken(response.data.token);
 	  $location.search('page', null);
           $location.path(vm.returnPage);
         }, function errorCallBack(response){

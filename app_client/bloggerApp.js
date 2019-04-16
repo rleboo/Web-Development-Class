@@ -61,18 +61,18 @@ function getBlogById($http, id) {
     return $http.get('/api/blogs/' + id);
 }
 
-function updateBlogById($http, id, data) {
+function updateBlogById($http, id, data, authentication) {
     return $http.put('/api/blogs/' + id, data , { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 
 }
 
-function addBlogByID($http, data)
+function addBlogByID($http, data, authentication)
 {
     return $http.post('/api/blogs/', data, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
 
-function deleteBlogByID($http, id) {
-    return $http.delete('/api/blogs/' + id)
+function deleteBlogByID($http, id, authentication) {
+    return $http.delete('/api/blogs/' + id, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
 
 
@@ -80,7 +80,6 @@ function deleteBlogByID($http, id) {
 app.controller('HomeController', ['$location',  function HomeController($location) {
     var vm = this;
     vm.title = "Ray Leboo's Blog Site";
-    console.log("fuck");
 	
 }]);
 
@@ -100,14 +99,15 @@ app.controller('ListController', function ListController($http) {
       });
 });
 
-app.controller('AddController', ['$http', '$location', function AddController($http, $location) {
+app.controller('AddController', ['$http', '$location', 'authentication',  function AddController($http, $location, authentication) {
     var vm = this;
     vm.message = "Add stuff";
-    vm.submit = function() {             
+    vm.submit = function() {
+    console.log("I clicked it");             
     addBlogByID($http, {
         blog_title : userForm.blog_title.value,
         blog_text : userForm.blog_text.value
-    })
+    }, authentication)
     .then(function successCallback(response) {
         vm.message = "Blog Added!";
         console.log("Success!");
@@ -120,7 +120,7 @@ app.controller('AddController', ['$http', '$location', function AddController($h
 }]);
 
 
-app.controller('EditController', ['$http', '$routeParams', '$location',  function EditController($http, $routeParams, $location) {
+app.controller('EditController', ['$http', '$routeParams', '$location', 'authentication', function EditController($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.blog = {}; 
     vm.id = $routeParams.id;
@@ -141,7 +141,7 @@ app.controller('EditController', ['$http', '$routeParams', '$location',  functio
         updateBlogById($http, vm.id, {
             blog_title : userForm.blog_title.value,
             blog_text : userForm.blog_text.value
-        })
+        }, authentication)
         .then(function successCallback(response) {
             vm.message = "Blog Updated!";
             console.log("Put succesfull");
@@ -153,7 +153,7 @@ app.controller('EditController', ['$http', '$routeParams', '$location',  functio
         }
 }]);
 
-app.controller('DeleteController', ['$http', '$routeParams', '$location',  function EditController($http, $routeParams, $location) {
+app.controller('DeleteController', ['$http', '$routeParams', '$location', 'authentication',  function EditController($http, $routeParams, $location, authentication) {
     var vm = this;
     vm.blog = {}; 
     vm.id = $routeParams.id;
@@ -171,7 +171,7 @@ app.controller('DeleteController', ['$http', '$routeParams', '$location',  funct
     });
 
     vm.submit = function() {             
-        deleteBlogByID($http, vm.id)
+        deleteBlogByID($http, vm.id, authentication)
         .then(function successCallback(response) {
             vm.message = "Blog Deleted!";
             console.log("delete succesful");

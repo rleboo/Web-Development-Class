@@ -1,7 +1,7 @@
 <navigation></navigation>
 
 <div ng-controller="LoginController as vm">
-    <p class="lead">Not a member? Please <a href="/#register?page={{vm.returnPage}}">register</a>first.</p>
+    <p class="lead">Not a member? Please <a href="/#register?page={{vm.returnPage}}">register</a> first.</p>
   <div class="card mt-3 border-primary .mx-auto" style="width: 50%">
     <form name="userForm" ng-submit="vm.submit()" ng-controller="LoginController" style="padding: 20px">
       <div role="alert" ng-show="vm.formError" class="alert alert-danger">{{ vm.formError }}</div>
@@ -13,7 +13,7 @@
             <label for="password">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password" ng-model="vm.credentials.password">
       </div>
-      <button type="submit" class="btn btn-default">Register!</button>
+      <button type="submit" class="btn btn-default">Login!</button>
     </form>
    </div>
 </div>

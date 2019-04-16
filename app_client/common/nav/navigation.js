@@ -1,18 +1,17 @@
-
 var app = angular.module('blogApp');
 
 //*** Directives ***
 app.directive('navigation', function() {
     return {
       restrict: 'EA',
-      templateUrl: 'common/nav/navigation.html',
+      templateUrl: '/common/nav/navigation.html',
       controller: 'NavigationController',
       controllerAs: 'vm'
     };
 });
 
 //*** Controller ***
-app.controller('NavigationController', ['$state', '$location', 'authentication', function NavigationController($state, $location, authentication) {
+app.controller('NavigationController', ['$location', 'authentication', function NavigationController($location, authentication) {
     var vm = this;
     vm.currentPath = $location.path();
     vm.currentUser = function()  {
