@@ -83,10 +83,19 @@ app.controller('HomeController', ['$location',  function HomeController($locatio
 	
 }]);
 
-app.controller('ListController', function ListController($http) {
+app.controller('ListController', ['$http', 'authentication', function ListController($http, authentication) {
     var vm = this;
     vm.message = "Something goes here!";
-    vm.blog = {};    
+    vm.blog = {};
+
+    vm.isLoggedIn = function() {
+        return authentication.isLoggedIn();
+    }
+	
+    vm.currentUser = function()  {
+        return authentication.currentUser();
+    }    
+    
 
     getAllBlogs($http)
     .then(function successCallback(response) {
@@ -97,16 +106,24 @@ app.controller('ListController', function ListController($http) {
         vm.message = "Could not get list of books";
         console.log("Error!");
       });
-});
+}]);
 
 app.controller('AddController', ['$http', '$location', 'authentication',  function AddController($http, $location, authentication) {
     var vm = this;
     vm.message = "Add stuff";
     vm.submit = function() {
-    console.log("I clicked it");             
+    console.log("I clicked it");
+    vm.currentUser = function()  {
+        return authentication.currentUser();
+    }
+    vm.data =  new Date().toString();
+    console.log(Date.now);            
     addBlogByID($http, {
         blog_title : userForm.blog_title.value,
-        blog_text : userForm.blog_text.value
+        blog_text : userForm.blog_text.value,
+	email: vm.currentUser().email,
+	name: vm.currentUser().name,
+	createdOn: vm.data
     }, authentication)
     .then(function successCallback(response) {
         vm.message = "Blog Added!";

@@ -9,16 +9,17 @@
                     </div>
                     <div class="card-body">
                       <h5 class="card-title">{{blogs.blog_title}}</h5>
-                      <p class="card-text">{{blogs.blog_text}}</p> 
+                      <p class="card-text">{{blogs.blog_text}}</p>
+		      <p><small>Published by {{blogs.name}} on {{blogs.createdOn}}</small></p> 
                     </div>
                     <div class="card-footer">
                         <div class = "col-sm">
                            <ul class="nav justify-content-end nav-pills card-header-pills">
-                           <li class="nav-item"> 
-                             <a class="nav-link" href="#/blogEdit/{{blogs._id}}"><i class="fa fa-edit"></i></a>
-                            </li>
-                           <li class="nav-item">
-                             <a class="nav-link" href="#/blogDelete/{{blogs._id}}"><i class="fa fa-trash"></i></a>
+                           <li class="nav-item" ng-if="vm.isLoggedIn()"> 
+                             <a ng-show="vm.currentUser().email == blogs.email" class="nav-link" href="#/blogEdit/{{blogs._id}}"><i class="fa fa-edit"></i></a>
+                           </li>
+                           <li class="nav-item" ng-if="vm.isLoggedIn()">
+                             <a ng-show="vm.currentUser().email == blogs.email" class="nav-link" href="#/blogDelete/{{blogs._id}}"><i class="fa fa-trash"></i></a>
                            </li>
                        </ul>
                     </div>
