@@ -1,0 +1,18 @@
+<!-- Navigation Directive -->    
+<div ng-controller="NavigationController">
+	<navigation></navigation>  
+</div>
+
+<div ng-controller="AddController as vm">  			
+  <div class="card mt-3 border-primary .mx-auto" style="width: 50%">
+    <form name="userForm" ng-submit="vm.submit()" ng-controller="AddController" style="padding: 20px">
+      <div class="form-group">
+          <label for="summary" class="text-primary">Blog Title</label>
+          <input class="form-control" id="title" name="blog_title"></textarea>
+          <label for="detail" class="text-primary">Blog Text</label>
+          <textarea class="form-control" id="text" rows="3" name="blog_text"></textarea>
+      </div>
+          <input type="submit" class="btn btn-primary" value="Add Blog">
+    </form>
+   </div>
+</div>

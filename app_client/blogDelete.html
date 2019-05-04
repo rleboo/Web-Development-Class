@@ -1,0 +1,16 @@
+<navigation></navigation>
+
+<div ng-controller="DeleteController as vm">
+  <div class="card mt-3 border-primary .mx-auto" style="width: 50%">
+    <form name="userForm" ng-submit="vm.submit()" ng-controller="DeleteController" style="padding: 20px">
+      <div class="form-group">
+          <label for="summary" class="text-dark">Blog Title</label>
+          <input class="form-control" id="title" name="blog_title" readonly value="{{vm.blog.blog_title}}"></textarea>
+          <label for="detail" class="text-dark">Blog Text</label>
+          <textarea class="form-control" id="text" rows="3" name="blog_text" readonly>{{vm.blog.blog_text}}</textarea>
+      </div>
+          <input type="submit" class="btn btn-danger float-right" value="Delete Blog">
+          <a class="btn btn-primary float-right" style="margin-right: 25px" href="#/blogList" role="button">Cancel</a>
+    </form>
+   </div>
+</div>
