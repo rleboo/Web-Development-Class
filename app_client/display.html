@@ -44,9 +44,8 @@
 
 <p></p>
 <div ng-repeat="comment in vm.comments">
-   <ul>
-	<li>
-		<div class="card border-light mb-3 .mx-auto" style="width: 66%">
+
+<div class="card border-light mb-3 .mx-auto" style="width: 66%">
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
       <blockquote class="blockquote mb-0">
@@ -66,10 +65,30 @@
       </div>
       </blockquote>
    </div>
-
-	</li>
-   </ul>
 </div>
+
+<div class="card border-light mb-3 .mx-auto" style="width: 66%">
+      <div class="card-header"> {{comment.name}} </div>
+   <div class="card-body">
+      <blockquote class="blockquote mb-0">
+      <p>{{comment.comment_text}}</p>
+      <div class = "card-fotter">
+	<div class = "col-sm">
+	   <footer class="blockquote-footer">May 5th <cite title="Source Title">Source Title</cite></footer>
+	   <ul class="nav justify-content-end nav-pills card-header-pills">
+	      <li class="nav-item" ng-if="vm.isLoggedIn()"> 
+                 <a class="nav-link" href="#/blogEdit/{{blogs._id}}"><i class="fa fa-edit"></i></a>
+	      </li>
+	      <li class="nav-item" ng-if="vm.isLoggedIn()">
+                 <a class="nav-link" href="#/blogDelete/{{blogs._id}}"><i class="fa fa-trash"></i></a>
+              </li>
+	   </ul>
+	</div>
+      </div>
+      </blockquote>
+   </div>
+</div>
+
 
 </div>
 
