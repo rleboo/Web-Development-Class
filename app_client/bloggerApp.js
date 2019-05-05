@@ -115,6 +115,8 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
     vm.id = $routeParams.id;
     vm.message = "Something goes here";
     vm.comments = {};
+    vm.curentAction = "display";
+
 	
     vm.isLoggedIn = function() {
         return authentication.isLoggedIn();

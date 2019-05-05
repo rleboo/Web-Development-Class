@@ -45,6 +45,7 @@
 <p></p>
 <div ng-repeat="comment in vm.comments">
 
+<div ng-show="vm.currentAction == 'display'">
 <div class="card border-light mb-3 .mx-auto" style="width: 66%">
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
@@ -66,7 +67,9 @@
       </blockquote>
    </div>
 </div>
+</div>
 
+<div ng-show="vm.currentAction == 'edit'">
 <div class="card border-light mb-3 .mx-auto" style="width: 66%">
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
@@ -88,7 +91,8 @@
       </blockquote>
    </div>
 </div>
-
+</div>
+</div>
 
 </div>
 
