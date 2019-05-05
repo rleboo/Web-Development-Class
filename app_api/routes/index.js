@@ -18,6 +18,8 @@ router.get('/blogs/:blogid', blogLocations.blogReadOne);
 router.get('/blogs/', blogLocations.blogList);
 
 router.put('/blogs/:blogid', auth, blogLocations.blogUpdate);
+router.put('/blogComment/:blogid', blogLocations.blogComment);
+
 
 router.delete('/blogs/:blogid', auth, blogLocations.blogDelete);
 

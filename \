@@ -80,27 +80,10 @@ function deleteBlogByID($http, id, authentication) {
     return $http.delete('/api/blogs/' + id, { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
 
-function addCommentById($http, id, data)
+function addCommentByID($http, data, authentication)
 {
-    return $http.put('api/blogComment/' + id, data);
+    return $http.post('api/blogComment/' + id, {headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
 }
-
-
-//*** Compiler function ****
-
-var buildCommentList = function(results) {
-  var comments = [];
-  results.forEach(function(obj) {
-    comments.push({
-      blog_title: obj.comment,
-      name: obj.name,
-      email: obj.email,
-      _id: obj._id
-    });
-  });
-  return comments;
-};
-
 
 //*** Controllers ***
 app.controller('HomeController', ['$location',  function HomeController($location) {
@@ -114,8 +97,7 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
     vm.blog = {}; 
     vm.id = $routeParams.id;
     vm.message = "Something goes here";
-    vm.comments = {};
-	
+    
     vm.isLoggedIn = function() {
         return authentication.isLoggedIn();
     }
@@ -128,31 +110,19 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
     .then(function successCallback(response) {
         vm.message = "Blog Returned";
 	vm.blog = response.data;
-	vm.comments = vm.blog.comment;
         console.log(response);
-	console.log(vm.comments);	
 
     }, function errorCallback(response) {
         vm.message = "Could not add blog";
         console.log("Error!")
     });
-    
 
     vm.submit = function() { 
 	console.log("Click works");
 	addCommentById($http, vm.blog._id, {
-	  email: vm.blog.email,
-	  name: vm.blog.name,
-	  comment: userForm.comment.value
-	}, authentication)
-	.then(function successCallback(response) {
-            vm.message = "Blog Updated!";
-            console.log("Comment Add Successful");
-            $location.path('/blogList');
-          }, function errorCallback(response) {
-            vm.message = "Could not add blog";
-            console.log("Error! Comment Did not Add")
-          });
+	   
+	
+	}
     }
 }]);
 

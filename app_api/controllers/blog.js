@@ -117,6 +117,28 @@ module.exports.blogUpdate = function(req, res) {
   );
 };
 
+module.exports.blogComment = function(req, res) {
+  console.log("Adding a blog comment to blog id of " + req.params.blogid);
+  console.log(req.body);
+  console.log(req.params);
+  Blog
+    .findOneAndUpdate(
+     { _id: req.params.blogid},
+     {$push: {comment: {comment_text:req.body.comment, email:req.body.email, name:req.body.name}}},
+     function(err, response) {
+         if (err) {
+            console.log("An error occured");
+            sendJSONresponse(res, 400, err);
+         } else {
+          console.log("Succesful");
+          sendJSONresponse(res, 201, response);
+        }
+    }
+  );
+};
+
+
+
 /* Delete one Blog */
 module.exports.blogDelete = function(req, res) {
   console.log("Deleting blog entry with id of " + req.params.blogid);
