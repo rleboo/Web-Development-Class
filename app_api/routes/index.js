@@ -23,6 +23,8 @@ router.put('/blogComment/:blogid', blogLocations.blogComment);
 
 router.delete('/blogs/:blogid', auth, blogLocations.blogDelete);
 
+router.put('/commentRemove/:blogid', blogLocations.blogCommentDelete);
+
 router.post('/register', ctrlAuth.register);
 
 router.post('/login', ctrlAuth.login); 

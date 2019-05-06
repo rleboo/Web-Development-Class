@@ -35,6 +35,30 @@ module.exports.blogReadOne = function(req, res) {
   }
 };
 
+
+module.exports.blogCommentDelete = function(req, res) {
+  console.log("Removing a blog comment to blog id of " + req.params.blogid + " " + req.body.commentid);
+  console.log(req.body);
+  console.log(req.params);
+  Blog
+    .findOneAndUpdate(
+     { _id: req.params.blogid},
+     {$pull: {'comment': { _id: req.body.commentid }}},
+     function(err, response) {
+         if (err) {
+            console.log("An error occured");
+            sendJSONresponse(res, 400, err);
+         } else {
+          console.log("Succesful");
+          sendJSONresponse(res, 201, response);
+        }
+    }
+  );
+};
+
+
+
+
 /* GET a list of all blogs */
 module.exports.blogList = function(req, res) {
   console.log('Getting Blog list');
@@ -136,6 +160,8 @@ module.exports.blogComment = function(req, res) {
     }
   );
 };
+
+
 
 
 

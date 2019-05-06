@@ -68,7 +68,11 @@ function getBlogById($http, id) {
 
 function updateBlogById($http, id, data, authentication) {
     return $http.put('/api/blogs/' + id, data , { headers: { Authorization: 'Bearer '+ authentication.getToken() }} );
+}
 
+function deleteCommentByID($http, id, data)
+{
+    return $http.put('/api/commentRemove/' + id, data);
 }
 
 function addBlogByID($http, data, authentication)
@@ -115,7 +119,7 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
     vm.id = $routeParams.id;
     vm.message = "Something goes here";
     vm.comments = {};
-    vm.curentAction = "display";
+    vm.currentAction = "display";
 
 	
     vm.isLoggedIn = function() {
@@ -124,6 +128,12 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
 	
     vm.currentUser = function()  {
         return authentication.currentUser();
+    }
+	
+    vm.changeDisplay = function(idnum)  {
+	vm.currentAction = idnum;
+	console.log("This should have worked");
+	console.log(idnum);
     }
     
     getBlogById($http, vm.id)
@@ -139,8 +149,9 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
         console.log("Error!")
     });
     
-
-    vm.submit = function() { 
+      
+    vm.submit = function() {
+	console.log(userForm);
 	console.log("Click works");
 	addCommentById($http, vm.blog._id, {
 	  email: vm.blog.email,
@@ -156,6 +167,27 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
             console.log("Error! Comment Did not Add")
           });
     }
+
+    /*
+    vm.commentDelete = function(comid) {
+      console.log("Let's delete");
+     
+       deleteCommentByID($http, vm.blog._id, {
+	commentid: comid
+	})  
+      .then(function successCallback(response) {
+      vm.message = "Blog Returned";
+      vm.blog = response.data;
+      console.log(response);
+
+    }, function errorCallback(response) {
+        vm.message = "Could not add blog";
+        console.log("Error!")
+    });
+
+    } */
+
+
 }]);
 
 
@@ -187,13 +219,16 @@ app.controller('ListController', ['$http', 'authentication', function ListContro
 app.controller('AddController', ['$http', '$location', 'authentication',  function AddController($http, $location, authentication) {
     var vm = this;
     vm.message = "Add stuff";
+
+
     vm.submit = function() {
     console.log("I clicked it");
     vm.currentUser = function()  {
         return authentication.currentUser();
     }
     vm.data =  new Date().toString();
-    console.log(Date.now);            
+    console.log(Date.now);
+    console.log(userForm);            
     addBlogByID($http, {
         blog_title : userForm.blog_title.value,
         blog_text : userForm.blog_text.value,

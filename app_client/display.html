@@ -16,8 +16,8 @@
                     <div class="card-footer">
                         <div class = "col-sm">
                            <ul class="nav justify-content-end nav-pills card-header-pills">
-                           <li class="nav-item" ng-if="vm.isLoggedIn()"> 
-                             <a ng-show="vm.currentUser().email == vm.blog.email" class="nav-link" href="#/blogEdit/{{vm.blog._id}}"><i class="fa fa-edit"></i></a>
+                           <li class="nav-item" ng-if="vm.isLoggedIn()">
+			    <a ng-show="vm.currentUser().email == vm.blog.email" class="nav-link" href="#/blogEdit/{{vm.blog._id}}"><i class="fa fa-edit"></i></a>
                            </li>
                            <li class="nav-item" ng-if="vm.isLoggedIn()">
                              <a ng-show="vm.currentUser().email == vm.blog.email" class="nav-link" href="#/blogDelete/{{vm.blog._id}}"><i class="fa fa-trash"></i></a>
@@ -31,13 +31,11 @@
 <h2>Comments:</h2>
 
 <div class="card mt-3 border-white .mx-auto" style="width: 66%">
-    <form  name="userForm" ng-submit="vm.submit()" ng-controller="DisplayController" style="padding: 20px">
+    <form name="userForm" ng-submit="vm.submit()" ng-controller="DisplayController" style="padding: 20px">
       <div class="form-group">
           <textarea class="form-control" id="text" rows="3" name="comment" placeholder="Write your comment here"></textarea>
       </div>
-	<div class="justify-content-end">
           <input type="submit" class="btn btn-primary" value="Post">
-	</div>
     </form>
 </div>
 
@@ -45,7 +43,7 @@
 <p></p>
 <div ng-repeat="comment in vm.comments">
 
-<div ng-show="vm.currentAction == 'display'">
+<div ng-show="vm.currentAction != comment._id">
 <div class="card border-light mb-3 .mx-auto" style="width: 66%">
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
@@ -56,10 +54,14 @@
 	   <footer class="blockquote-footer">May 5th <cite title="Source Title">Source Title</cite></footer>
 	   <ul class="nav justify-content-end nav-pills card-header-pills">
 	      <li class="nav-item" ng-if="vm.isLoggedIn()"> 
-                 <a class="nav-link" href="#/blogEdit/{{blogs._id}}"><i class="fa fa-edit"></i></a>
+		<form ng-submit="vm.changeDisplay(comment._id)">
+                 <button class="btn btn-outline-success" type="submit"><i class="fa fa-edit"></i></button>
+		</form>
 	      </li>
 	      <li class="nav-item" ng-if="vm.isLoggedIn()">
-                 <a class="nav-link" href="#/blogDelete/{{blogs._id}}"><i class="fa fa-trash"></i></a>
+		 <form ng-submit="vm.commentDelete(comment._id)">
+                   <button class="btn btn-outline-success" type="submit"><i class="fa fa-trash"></i></button>
+		 </form>
               </li>
 	   </ul>
 	</div>
@@ -69,25 +71,20 @@
 </div>
 </div>
 
-<div ng-show="vm.currentAction == 'edit'">
+
+<div ng-show="vm.currentAction == comment._id">
 <div class="card border-light mb-3 .mx-auto" style="width: 66%">
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
       <blockquote class="blockquote mb-0">
-      <p>{{comment.comment_text}}</p>
-      <div class = "card-fotter">
-	<div class = "col-sm">
-	   <footer class="blockquote-footer">May 5th <cite title="Source Title">Source Title</cite></footer>
-	   <ul class="nav justify-content-end nav-pills card-header-pills">
-	      <li class="nav-item" ng-if="vm.isLoggedIn()"> 
-                 <a class="nav-link" href="#/blogEdit/{{blogs._id}}"><i class="fa fa-edit"></i></a>
-	      </li>
-	      <li class="nav-item" ng-if="vm.isLoggedIn()">
-                 <a class="nav-link" href="#/blogDelete/{{blogs._id}}"><i class="fa fa-trash"></i></a>
-              </li>
-	   </ul>
-	</div>
+      <form  name="userForm" ng-submit="vm.submit()" ng-controller="EditController" style="padding: 20px">
+      <div class="form-group">
+        <textarea class="form-control" id="text" rows="3" name="blog_text">{{comment.comment_text}}</textarea>	
       </div>
+      <div class="justify-content-end">
+	<input type="submit" class="btn btn-danger" value="Submit">
+      </div>
+      </form>	
       </blockquote>
    </div>
 </div>
