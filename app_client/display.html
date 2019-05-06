@@ -77,9 +77,9 @@
       <div class="card-header"> {{comment.name}} </div>
    <div class="card-body">
       <blockquote class="blockquote mb-0">
-      <form  name="userForm" ng-submit="vm.submit()" ng-controller="EditController" style="padding: 20px">
+      <form name="userEdit" ng-submit="vm.commentEdit(comment._id)" ng-controller="DisplayController" style="padding: 20px">
       <div class="form-group">
-        <textarea class="form-control" id="text" rows="3" name="blog_text">{{comment.comment_text}}</textarea>	
+        <textarea class="form-control" id="textEdit" rows="3" name="comment_text">{{comment.comment_text}}</textarea>	
       </div>
       <div class="justify-content-end">
 	<input type="submit" class="btn btn-danger" value="Submit">

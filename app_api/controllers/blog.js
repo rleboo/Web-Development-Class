@@ -57,6 +57,26 @@ module.exports.blogCommentDelete = function(req, res) {
 };
 
 
+module.exports.commentEdit = function(req, res) {
+  console.log("Editing a blog comment to blog id of " + req.params.blogid + " " + req.body.commentid);
+  console.log(req.body);
+  console.log(req.params);
+  Blog
+    .findOneAndUpdate(
+     { _id: req.params.blogid},
+     {$set: {'comment': { _id: req.body.commentid, comment_text: req.body.comment_text}}},
+     function(err, response) {
+         if (err) {
+            console.log("An error occured");
+            sendJSONresponse(res, 400, err);
+         } else {
+          console.log("Succesful");
+          sendJSONresponse(res, 201, response);
+        }
+    }
+  );
+};
+
 
 
 /* GET a list of all blogs */

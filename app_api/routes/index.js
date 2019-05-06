@@ -20,6 +20,8 @@ router.get('/blogs/', blogLocations.blogList);
 router.put('/blogs/:blogid', auth, blogLocations.blogUpdate);
 router.put('/blogComment/:blogid', blogLocations.blogComment);
 
+router.put('/commentEdit/:blogid', blogLocations.commentEdit);
+
 
 router.delete('/blogs/:blogid', auth, blogLocations.blogDelete);
 
