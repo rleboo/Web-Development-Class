@@ -53,14 +53,9 @@
 	<div class = "col-sm">
 	   <footer class="blockquote-footer">May 5th <cite title="Source Title">Source Title</cite></footer>
 	   <ul class="nav justify-content-end nav-pills card-header-pills">
-	      <li class="nav-item" ng-if="vm.isLoggedIn()"> 
-		<form ng-submit="vm.changeDisplay(comment._id)">
-                 <button class="btn btn-outline-success" type="submit"><i class="fa fa-edit"></i></button>
-		</form>
-	      </li>
 	      <li class="nav-item" ng-if="vm.isLoggedIn()">
 		 <form ng-submit="vm.commentDelete(comment._id)">
-                   <button class="btn btn-outline-success" type="submit"><i class="fa fa-trash"></i></button>
+                   <button ng-show="vm.currentUser().email == comment.email" class="btn btn-outline-success" type="submit"><i class="fa fa-trash"></i></button>
 		 </form>
               </li>
 	   </ul>
@@ -68,26 +63,6 @@
       </div>
       </blockquote>
    </div>
-</div>
-</div>
-
-
-<div ng-show="vm.currentAction == comment._id">
-<div class="card border-light mb-3 .mx-auto" style="width: 66%">
-      <div class="card-header"> {{comment.name}} </div>
-   <div class="card-body">
-      <blockquote class="blockquote mb-0">
-      <form name="userEdit" ng-submit="vm.commentEdit(comment._id)" ng-controller="DisplayController" style="padding: 20px">
-      <div class="form-group">
-        <textarea class="form-control" id="textEdit" rows="3" name="comment_text">{{comment.comment_text}}</textarea>	
-      </div>
-      <div class="justify-content-end">
-	<input type="submit" class="btn btn-danger" value="Submit">
-      </div>
-      </form>	
-      </blockquote>
-   </div>
-</div>
 </div>
 </div>
 

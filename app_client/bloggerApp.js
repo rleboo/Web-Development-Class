@@ -89,10 +89,6 @@ function addCommentById($http, id, data)
     return $http.put('api/blogComment/' + id, data);
 }
 
-function updateComment($http, id, data) {
-    return $http.put('api/commentEdit/' + id, data);
-}
-
 
 //*** Compiler function ****
 
@@ -147,10 +143,9 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
 	vm.comments = vm.blog.comment;
     }, function errorCallback(response) {
         vm.message = "Could not add blog";
-        console.log("Error!")
+        console.log("Error!");
     });
     
-    /**
 
     $scope.callAtInterval = function() {
     getBlogById($http, vm.id)
@@ -165,8 +160,7 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
 
     }
 
-    $interval( function(){$scope.callAtInterval();}, 1000, 0, true);	
-    **/
+    $interval( function(){$scope.callAtInterval();}, 1500, 0, true);	
       
     vm.submit = function() {
 	console.log(userForm);
@@ -179,9 +173,9 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
 	.then(function successCallback(response) {
             vm.message = "Blog Updated!";
             console.log("Comment Add Successful");
-          }, function errorCallback(response) {
+         }, function errorCallback(response) {
             vm.message = "Could not add blog";
-            console.log("Error! Comment Did not Add")
+            console.log("Error! Comment Did not Add");
           });
     }
 
@@ -195,31 +189,12 @@ app.controller('DisplayController', ['$http', '$routeParams', '$location','authe
       vm.message = "Blog Returned";
       vm.blog = response.data;
       console.log(response);
-
     }, function errorCallback(response) {
         vm.message = "Could not add blog";
-        console.log("Error!")
+        console.log("Error!");
     });
 
     }
-
-    vm.commentEdit = function(comid) {
-       console.log("Let's Edit");
-       console.log(userEdit);	
-       updateComment($http, vm.blog._id, {
-	commentid: comid,
-	comment_text: userEdit.comment_text.value
-	})
-      .then(function successCallback(response) {
-      vm.message = "Blog Returned";
-      vm.blog = response.data;
-    }, function errorCallback(response) {
-        vm.message = "Could not add blog";
-        console.log("Error!")
-    });
-
-    }
-
 
 }]);
 
